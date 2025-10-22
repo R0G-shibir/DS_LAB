@@ -12,32 +12,35 @@ struct Node{
 
 int main(){
 
-    Node *head = new Node {5,nullptr};
+    cout<<"Enter the size of List : "<<endl;
+    int n;cin>>n;
 
-    Node *temp = new Node {3,nullptr};
-    head->next = temp;
+    cout<<"Enter the data : "<<endl;
+    int x;cin>>x;
 
-    temp->next = new Node {9,nullptr};
-    temp = temp->next;
+    Node *head = new Node {x,NULL};
 
-    temp->next = new Node {42,nullptr};
-    temp = temp->next;
+    Node *temp = head;
+    n--;
 
-    temp->next = new Node {0,nullptr};
-    temp = temp->next;
+    while(n--){
 
-    temp->next = new Node {10,nullptr};
+        int y;cin>>y;
+        Node *current = new Node {y,NULL};
 
-    Node *current = head;
-
-    while(current!=nullptr){
-
-        cout<<current->data<<" ";
-
-        current = current->next;
+        temp->next = current;
+        temp = temp->next;
 
     }
 
+    Node *ptr = head;
+    while (ptr != NULL){
+
+        cout<<ptr->data<<" ";
+        ptr = ptr->next;
+    }
     cout<<endl;
+    
+    return 0;
 
 }
