@@ -9,6 +9,13 @@ struct Node{
     Node *next;
 
 };
+//Function to create Node  
+Node* createNode (int x) {
+
+    Node* newNode = new Node {x,nullptr};
+    return newNode;
+
+}
 
 int main(){
 
@@ -16,24 +23,29 @@ int main(){
     int n;cin>>n;
 
     cout<<"Enter the data : "<<endl;
-    int x;cin>>x;
 
-    Node *head = new Node {x,NULL};
+    Node *head = nullptr;
 
-    Node *temp = head;
-    n--;
+    Node *tail = nullptr;
 
     while(n--){
 
-        int y;cin>>y;
-        Node *current = new Node {y,NULL};
+        int x;cin>>x;
+        Node *current = createNode(x);
 
-        temp->next = current;
-        temp = temp->next;
+        if(head==nullptr){
+            head=tail=current;
+        }
+        else{
+            tail->next=current;
+            tail = tail->next;
+        }
 
     }
 
+    //Display Nodes to Console 
     Node *ptr = head;
+    cout<<"\nLinked List : ";
     while (ptr != NULL){
 
         cout<<ptr->data<<" ";
