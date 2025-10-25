@@ -1,7 +1,7 @@
 /*
 Inserting: carry out the following operations on a Linked List 
-    a) 54 to a sorted array. 
-    b) Rahim to a sorted array. 
+    a) 54 to a sorted Linked List.
+    b) Rahim to a sorted Linked List.
     c) 99 to position 5. 
     d) Karim to position 5.
 */
