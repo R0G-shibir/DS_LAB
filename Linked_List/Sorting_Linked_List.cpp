@@ -18,12 +18,12 @@ void display (Node *ptr){
     cout<<endl;
 }
 //Function to sort the Linked List
-void sort(Node* &head){
+void sort(Node* head){
     if(head == nullptr ) return ;
 
     Node *i,*j;
     int temp;
-    
+
     for( i = head ; i->next != nullptr ;i = i->next ){
         for( j = i->next ; j != nullptr ; j = j->next){
             if(i-> data > j->data){
