@@ -1,4 +1,4 @@
-//Push an Item onto a Stack.
+//Delete the top elements of Stack.
 
 #include <iostream>
 #define MAX 100
@@ -21,6 +21,15 @@ public:
             return ;
         }
         stack[++top] = data;
+    }
+
+    //Function delete item from stack
+    void pop(){
+        if(top == -1){
+            cout<<"Stack is empty! "<<endl;
+            return ;
+        }
+        cout<<"Top item : "<<stack[top--]<<endl;
     }
 
     //Function to display elements of stack
@@ -50,6 +59,8 @@ int main(){
         s.push(x);
     }
 
+    s.display();
+    s.pop();
     s.display();
     
     return 0;
