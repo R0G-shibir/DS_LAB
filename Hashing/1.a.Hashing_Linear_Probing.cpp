@@ -3,7 +3,8 @@
     (54, 26, 93, 17, 77, 31, 44, 55, 20) 
     to a hash table (Size of hash table is a prime number).
     While storing data if there is a collision 
-    use the Linear Probing technique
+    use the Linear Probing technique .Next search for
+    an item .
 
 */
 
@@ -44,6 +45,23 @@ void display(){
     }
 }
 
+void search(int key){
+    int index = hash_Function(key);
+    int start_index = index;
+
+    while(Hash_Table[index] != -1){
+        if(Hash_Table[index] == key){
+            cout<<"Element is found at index : "<<index<<endl;
+            return;
+        }
+        index = (index + 1) % TABLE_SIZE;
+        if(index == start_index){
+            break;
+        }
+    }
+    cout<<"Element is  not found"<<endl;
+}
+
 int main(){
 
     int data[] = { 54, 26, 93, 17, 77, 31, 44, 55, 20};
@@ -55,5 +73,7 @@ int main(){
     }
 
     display();
+    search(26);
+    search(100);
     return 0;
 }

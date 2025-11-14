@@ -44,6 +44,23 @@ void display(){
     }
 }
 
+void search(int key){
+    int index = hash_Function(key);
+    int start_index = index;
+
+    while(HASH_TABLE[index] != -1){
+        if(HASH_TABLE[index] == key){
+            cout<<"Element is found at index : "<<index<<endl;
+            return;
+        }
+        index = (index + 1) % TABLE_SIZE;
+        if(index == start_index){
+            break;
+        }
+    }
+    cout<<"Element is  not found"<<endl;
+}
+
 int main(){
 
     int data[] = { 54, 26, 93, 17, 77, 31, 44, 55, 20};
@@ -55,5 +72,8 @@ int main(){
     }
 
     display();
+    search(55);
+    search(54);
+    search(100);
     return 0;
 }
