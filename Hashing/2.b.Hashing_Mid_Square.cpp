@@ -5,6 +5,7 @@
     storing data if there is a collision use the Chaining
     technique.Next search for an item.
 */
+
 #include <iostream>
 #define TABLE_SIZE 11
 using namespace std;
