@@ -5,7 +5,6 @@
     While storing data if there is a collision 
     use the Linear Probing technique .Next search for
     an item .
-
 */
 
 #include <iostream>

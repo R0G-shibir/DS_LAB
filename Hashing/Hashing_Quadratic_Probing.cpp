@@ -3,7 +3,7 @@
     (54, 26, 93, 17, 77, 31, 44, 55, 20) 
     to a hash table (Size of hash table is a prime number).
     While storing data if there is a collision 
-    use the Plus 3 Probing .Next search for
+    use the Quadratic Probing technique .Next search for
     an item .
 */
 
@@ -25,16 +25,22 @@ int hash_Function(int key){
 
 void insert(int key){
     int index = hash_Function(key);
+    if(HASH_TABLE[index] == -1){
+        HASH_TABLE[index] = key;
+        return;
+    }
+
+    int i = 1;
     int start_index = index;
-    
-    while(HASH_TABLE[index] != -1){
-        index = (index + 3) % TABLE_SIZE;
-        if(index == start_index){
-            cout << "Hash table is full! Cannot insert " << key << endl;
-            return ;
+    while(i < TABLE_SIZE){
+        index = (start_index + (i*i)) % TABLE_SIZE;
+        if(HASH_TABLE[index] == -1){
+            HASH_TABLE[index] = key;
+            return;
         }
+        i++;  
     } 
-    HASH_TABLE[index] = key;
+    cout << "Hash table is full! Cannot insert " << key << endl;
 }
 
 void display(){
@@ -46,19 +52,25 @@ void display(){
 
 void search(int key){
     int index = hash_Function(key);
+    if(HASH_TABLE[index] == key){
+        cout<<"Element is found at index : "<<index<<endl;
+        return;
+    }
     int start_index = index;
-
-    while(HASH_TABLE[index] != -1){
+    int i = 1; 
+    while(i < TABLE_SIZE){
+        index = (start_index + (i*i)) % TABLE_SIZE;
         if(HASH_TABLE[index] == key){
             cout<<"Element is found at index : "<<index<<endl;
             return;
         }
-        index = (index + 1) % TABLE_SIZE;
-        if(index == start_index){
-            break;
+        else if(HASH_TABLE[index] == -1){
+            cout<<"Element is not found"<<endl;
+            return;
         }
-    }
-    cout<<"Element is  not found"<<endl;
+        i++;  
+    } 
+    cout<<"Element is not found"<<endl;
 }
 
 int main(){
